@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: backend-proxy
+  labels:
+    app:  ti-sales-portal
+    tier: backend-proxy
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      tier: backend-proxy
+  template:
+    metadata:
+      labels:
+        tier: backend-proxy
+    spec:
+      containers:
+      - name: nginx-reversep
+        image: nginx
